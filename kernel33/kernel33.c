@@ -163,3 +163,19 @@ WINBASEAPI BOOL GetOverlappedResultEx(
 	ODS_ENTRY();
 	return GetOverlappedResult(hFile, lpOverlapped, lpNumberOfBytesTransferred, (dwMilliseconds == INFINITE));
 }
+
+WINBASEAPI HANDLE CreateFile2(
+	IN    LPCWSTR                          lpFileName, 
+	IN    DWORD                            dwDesiredAccess, 
+	IN    DWORD                            dwShareMode, 
+	IN    DWORD                            dwCreationDisposition, 
+	IN L  PCREATEFILE2_EXTENDED_PARAMETERS pCreateExParams)
+
+{
+   ODS_ENTRY();
+   if(!pCreateExParams)
+     return CreateFileW(lpFileName, dwDesiredAccess, dwShareMode, NULL, dwCreationDisposition, 0, NULL);
+	 
+   return CreateFileW(lpFileName, dwDesiredAccess, dwShareMode, pCreateExParams->lpSecurityAttributes, dwCreationDisposition, pCreateExParams->dwFileAttributes | pCreateExParams->dwFileFlags | pCreateExParams->dwSecurityQosFlags, pCreateExParams->hTemplateFile);
+
+}
