@@ -169,7 +169,7 @@ WINBASEAPI HANDLE CreateFile2(
 	IN    DWORD                            dwDesiredAccess, 
 	IN    DWORD                            dwShareMode, 
 	IN    DWORD                            dwCreationDisposition, 
-	IN L  PCREATEFILE2_EXTENDED_PARAMETERS pCreateExParams)
+	IN    PCREATEFILE2_EXTENDED_PARAMETERS pCreateExParams)
 
 {
    ODS_ENTRY();
